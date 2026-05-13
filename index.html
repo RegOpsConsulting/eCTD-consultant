@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Harvey, MS, RAC (US) — Regulatory Operations & Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f2744;
+    --navy-mid: #1a3a5c;
+    --navy-light: #2a527a;
+    --accent: #2176ae;
+    --accent-light: #e8f2fa;
+    --accent-mid: #b8d7f0;
+    --slate: #4a6580;
+    --mist: #f4f7fb;
+    --white: #ffffff;
+    --border: #d4e2ef;
+    --text-primary: #0f2744;
+    --text-secondary: #4a6580;
+    --text-muted: #7a96ae;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --nav-h: 64px;
+    --max-w: 1080px;
+    --radius: 8px;
+    --radius-lg: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background: var(--white);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    height: var(--nav-h);
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+  }
+  .nav-inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-brand {
+    font-family: var(--font-body); font-weight: 500; font-size: 15px;
+    color: var(--navy); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .nav-brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2px; align-items: center; }
+  .nav-links a {
+    font-size: 13.5px; font-weight: 400; color: var(--text-secondary);
+    text-decoration: none; padding: 6px 12px; border-radius: var(--radius);
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-links a:hover { color: var(--navy); background: var(--mist); }
+  .nav-links a.active { color: var(--accent); font-weight: 500; }
+  .nav-cta {
+    font-size: 13px; font-weight: 500; color: var(--white) !important;
+    background: var(--accent) !important; padding: 7px 16px !important;
+    border-radius: var(--radius) !important;
+    transition: background 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--navy-light) !important; }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--navy); }
+
+  /* ── PAGE SECTIONS ───────────────────────────────── */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── HERO ────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, var(--accent) 100%);
+    color: var(--white); padding: 80px 2rem 72px;
+  }
+  .hero-inner { max-width: var(--max-w); margin: 0 auto; }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-mid); margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: var(--font-display); font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400; line-height: 1.15; margin-bottom: 10px;
+    color: var(--white);
+  }
+  .hero-creds {
+    font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;
+    font-weight: 300; letter-spacing: 0.02em;
+  }
+  .hero-subtitle {
+    font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.82);
+    line-height: 1.65; max-width: 560px; margin-bottom: 28px;
+  }
+  .hero-avail {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12px; color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 28px;
+  }
+  .hero-avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #7dd77d; flex-shrink: 0; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .hero-badge {
+    font-size: 11.5px; padding: 4px 12px; border-radius: 4px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    padding: 11px 22px; border-radius: var(--radius); cursor: pointer;
+    border: none; text-decoration: none; transition: all 0.15s;
+    background: var(--white); color: var(--navy);
+  }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: var(--font-body); font-size: 14px; font-weight: 400;
+    padding: 11px 22px; border-radius: var(--radius); cursor: pointer;
+    background: transparent; border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.9); text-decoration: none; transition: all 0.15s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+
+  /* ── SECTION WRAPPERS ────────────────────────────── */
+  .section { padding: 60px 2rem; }
+  .section-alt { background: var(--mist); }
+  .section-inner { max-width: var(--max-w); margin: 0 auto; }
+  .section-header { margin-bottom: 36px; }
+  .section-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 10px;
+  }
+  .section-lead { font-size: 15.5px; color: var(--text-secondary); max-width: 560px; line-height: 1.7; }
+
+  /* ── HOME: EXPERTISE CARDS ───────────────────────── */
+  .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .exp-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 24px; transition: border-color 0.2s, box-shadow 0.2s; cursor: pointer;
+  }
+  .exp-card:hover { border-color: var(--accent-mid); box-shadow: 0 4px 20px rgba(33,118,174,0.1); }
+  .exp-card-icon {
+    width: 40px; height: 40px; border-radius: var(--radius); background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: var(--accent); margin-bottom: 14px;
+  }
+  .exp-card-title { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .exp-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+  .exp-card-link {
+    font-size: 12.5px; color: var(--accent); font-weight: 500;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+  }
+  .exp-card-link svg { width: 13px; height: 13px; }
+
+  /* ── HOME: STATS STRIP ───────────────────────────── */
+  .stats-strip {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .stat-item {
+    padding: 24px 20px; border-right: 1px solid var(--border); text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display); font-size: 32px; color: var(--navy);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-muted); }
+
+  /* ── HOME: SERVICES LIST ─────────────────────────── */
+  .services-list { display: flex; flex-direction: column; gap: 12px; }
+  .service-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 18px 20px; background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); transition: border-color 0.2s;
+  }
+  .service-item:hover { border-color: var(--accent-mid); }
+  .service-icon {
+    width: 36px; height: 36px; border-radius: var(--radius); background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent); font-size: 16px; flex-shrink: 0; margin-top: 2px;
+  }
+  .service-name { font-size: 14.5px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .service-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ── EXPERTISE PAGES ─────────────────────────────── */
+  .expertise-page-hero {
+    background: var(--mist); border-bottom: 1px solid var(--border);
+    padding: 48px 2rem 40px;
+  }
+  .expertise-page-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+  .ep-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--accent); text-decoration: none;
+    margin-bottom: 20px; cursor: pointer; background: none; border: none; font-family: var(--font-body);
+  }
+  .ep-back:hover { color: var(--navy); }
+  .ep-icon-large {
+    width: 56px; height: 56px; border-radius: var(--radius-lg);
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: var(--accent); margin-bottom: 16px;
+  }
+  .ep-title {
+    font-family: var(--font-display); font-size: clamp(26px, 4vw, 40px);
+    color: var(--navy); margin-bottom: 10px;
+  }
+  .ep-intro { font-size: 16px; color: var(--text-secondary); max-width: 600px; line-height: 1.7; }
+
+  .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 32px; }
+  .detail-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px;
+  }
+  .detail-card-title {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 14px;
+  }
+  .detail-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .detail-list li {
+    font-size: 14px; color: var(--text-secondary); padding-left: 16px; position: relative; line-height: 1.5;
+  }
+  .detail-list li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+  }
+
+  .callout {
+    background: var(--accent-light); border: 1px solid var(--accent-mid);
+    border-left: 3px solid var(--accent); border-radius: var(--radius);
+    padding: 16px 20px; margin-top: 8px;
+  }
+  .callout p { font-size: 14px; color: var(--navy-light); line-height: 1.7; }
+
+  /* ── TOOLS PAGE ──────────────────────────────────── */
+  .tools-category { margin-bottom: 40px; }
+  .tools-cat-title {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tool-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px; border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--white); font-size: 13.5px; color: var(--text-primary);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .tool-chip:hover { border-color: var(--accent-mid); background: var(--accent-light); }
+  .tool-chip-icon { font-size: 15px; color: var(--accent); }
+
+  /* ── CONTACT STRIP ───────────────────────────────── */
+  .contact-strip {
+    background: var(--navy); color: var(--white);
+    padding: 48px 2rem; text-align: center;
+  }
+  .contact-strip h2 {
+    font-family: var(--font-display); font-size: 28px; margin-bottom: 10px; font-weight: 400;
+  }
+  .contact-strip p { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .contact-item {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13.5px; color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 18px; border-radius: var(--radius);
+    text-decoration: none; transition: background 0.15s;
+  }
+  .contact-item:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer {
+    background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 2rem; text-align: center;
+  }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+  /* ── MOBILE ──────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .hamburger { display: block; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 12px; gap: 2px; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 10px 14px; }
+    .stats-strip { grid-template-columns: 1fr 1fr; }
+    .stat-item:nth-child(2) { border-right: none; }
+    .hero-btns { flex-direction: column; }
+  }
+
+  /* SVG icons inline */
+  .icon-svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: inline-block; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#" onclick="showPage('home')">Thomas Harvey <span>·</span> Regulatory Operations</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a>
+      <a href="#" onclick="showPage('expertise')" id="nav-expertise">Expertise</a>
+      <a href="#" onclick="showPage('tools')" id="nav-tools">Tools &amp; Systems</a>
+      <a href="#" onclick="showPage('about')" id="nav-about">About</a>
+      <a href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank" class="nav-cta">LinkedIn ↗</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <svg class="icon-svg" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: HOME -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Regulatory Affairs &amp; Operations Professional</div>
+      <div class="hero-title">Thomas Harvey</div>
+      <div class="hero-creds">MS &nbsp;·&nbsp; RAC (US)</div>
+      <div class="hero-avail">
+        <span class="hero-avail-dot"></span>
+        Available for full-time, contract, project-based, or consulting support
+      </div>
+      <div class="hero-subtitle">
+        Experienced regulatory operations professional supporting biopharma teams with submission readiness, eCTD coordination, regulatory document management, Veeva/eTMF workflows, process improvement, and compliant operational execution.
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge">eCTD Publishing</span>
+        <span class="hero-badge">Veeva Vault eTMF</span>
+        <span class="hero-badge">Submission Readiness</span>
+        <span class="hero-badge">Document QC</span>
+        <span class="hero-badge">FDA / EMA</span>
+        <span class="hero-badge">Process Improvement</span>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('expertise')">
+          <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          View Expertise
+        </button>
+        <a class="btn-outline" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="section section-alt">
+    <div class="section-inner">
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-num">17+</div>
+          <div class="stat-label">Years in regulatory affairs &amp; operations</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">FDA / EMA</div>
+          <div class="stat-label">Submission experience across regions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">eCTD</div>
+          <div class="stat-label">End-to-end publishing &amp; QC</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">MS, RAC</div>
+          <div class="stat-label">Advanced credentials in regulatory affairs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expertise Overview -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">What I do</div>
+        <div class="section-title">Areas of expertise</div>
+        <div class="section-lead">Click any area to explore detailed capabilities, experience, and the specific ways I can support your team.</div>
+      </div>
+      <div class="expertise-grid">
+        <div class="exp-card" onclick="showExpertise('reg-ops')">
+          <div class="exp-card-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="exp-card-title">Regulatory Operations &amp; Submissions</div>
+          <div class="exp-card-desc">Submission planning, eCTD coordination, QC, publishing vendor oversight, tracking, and cross-functional support.</div>
+          <span class="exp-card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="exp-card" onclick="showExpertise('doc-quality')">
+          <div class="exp-card-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="exp-card-title">Document &amp; Submission Quality</div>
+          <div class="exp-card-desc">PDF QC, bookmarking, hyperlinking, Word template cleanup, submission-ready formatting, and document standards.</div>
+          <span class="exp-card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="exp-card" onclick="showExpertise('reg-systems')">
+          <div class="exp-card-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="exp-card-title">Regulatory Systems &amp; Veeva/eTMF</div>
+          <div class="exp-card-desc">Veeva Vault eTMF admin support, workflow troubleshooting, UAT, system documentation, and user guidance.</div>
+          <span class="exp-card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="exp-card" onclick="showExpertise('process')">
+          <div class="exp-card-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div class="exp-card-title">Process Improvement &amp; SOPs</div>
+          <div class="exp-card-desc">SOPs, work instructions, templates, checklists, inspection-readiness documentation, and operational cleanup.</div>
+          <span class="exp-card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="exp-card" onclick="showExpertise('technical')">
+          <div class="exp-card-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="exp-card-title">Technical Enablement</div>
+          <div class="exp-card-desc">Excel/VBA automation, macros, dashboards, trackers, and practical tools that reduce manual work and improve visibility.</div>
+          <span class="exp-card-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How I Can Help -->
+  <div class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">Services</div>
+        <div class="section-title">How I can support your team</div>
+        <div class="section-lead">Available for project-based, part-time, contract, or full-time engagement across the following areas.</div>
+      </div>
+      <div class="services-list">
+        <div class="service-item">
+          <div class="service-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <div class="service-name">Short-term regulatory operations support</div>
+            <div class="service-desc">Hands-on help with submission planning, coordination, and execution — covering gaps or surges in capacity.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="service-name">Submission readiness &amp; document QC</div>
+            <div class="service-desc">PDF QC, bookmarking, hyperlinking, formatting review, and pre-submission checks to submission-ready standards.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <div class="service-name">Veeva/eTMF workflow support</div>
+            <div class="service-desc">Administrative support, workflow troubleshooting, UAT coordination, and user guidance for Veeva Vault environments.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div>
+            <div class="service-name">SOP, template &amp; process documentation</div>
+            <div class="service-desc">Work instructions, checklists, regulatory operations SOPs, and inspection-readiness documentation for growing teams.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">
+            <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div>
+            <div class="service-name">Regulatory tracker &amp; dashboard setup</div>
+            <div class="service-desc">Excel-based or lightweight tools that bring visibility to submission timelines, document status, and operational metrics.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location / contact strip -->
+  <div class="contact-strip">
+    <h2>Let's connect</h2>
+    <p>Based in Frederick, MD. Open to remote and hybrid opportunities nationwide.</p>
+    <div class="contact-info">
+      <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn Profile
+      </a>
+      <span class="contact-item">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Frederick, MD &nbsp;·&nbsp; Remote-friendly
+      </span>
+    </div>
+  </div>
+
+  <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: EXPERTISE (overview + sub-sections) -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="page-expertise">
+
+  <!-- Expertise overview list -->
+  <div id="expertise-overview">
+    <div class="expertise-page-hero">
+      <div class="expertise-page-hero-inner">
+        <div class="section-eyebrow">Expertise</div>
+        <div class="ep-title">Detailed capabilities</div>
+        <div class="ep-intro">Select an area below to explore specific capabilities, activities, and experience within each domain.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-inner">
+        <div class="expertise-grid">
+          <div class="exp-card" onclick="showExpertise('reg-ops')">
+            <div class="exp-card-icon"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+            <div class="exp-card-title">Regulatory Operations &amp; Submissions</div>
+            <div class="exp-card-desc">Submission planning, eCTD coordination, QC, publisher oversight, and timelines.</div>
+            <span class="exp-card-link">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </div>
+          <div class="exp-card" onclick="showExpertise('doc-quality')">
+            <div class="exp-card-icon"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div class="exp-card-title">Document &amp; Submission Quality</div>
+            <div class="exp-card-desc">PDF QC, formatting, bookmarking, Word cleanup, and submission standards.</div>
+            <span class="exp-card-link">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </div>
+          <div class="exp-card" onclick="showExpertise('reg-systems')">
+            <div class="exp-card-icon"><svg class="icon-svg" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <div class="exp-card-title">Regulatory Systems &amp; Veeva/eTMF</div>
+            <div class="exp-card-desc">Admin support, UAT, workflows, system documentation for Veeva Vault environments.</div>
+            <span class="exp-card-link">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </div>
+          <div class="exp-card" onclick="showExpertise('process')">
+            <div class="exp-card-icon"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+            <div class="exp-card-title">Process Improvement &amp; SOPs</div>
+            <div class="exp-card-desc">SOPs, work instructions, checklists, inspection readiness, operational cleanup.</div>
+            <span class="exp-card-link">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </div>
+          <div class="exp-card" onclick="showExpertise('technical')">
+            <div class="exp-card-icon"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <div class="exp-card-title">Technical Enablement</div>
+            <div class="exp-card-desc">Excel/VBA automation, dashboards, trackers, and practical regulatory tools.</div>
+            <span class="exp-card-link">View details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-page: Regulatory Ops -->
+  <div id="expertise-reg-ops" style="display:none">
+    <div class="expertise-page-hero">
+      <div class="expertise-page-hero-inner">
+        <button class="ep-back" onclick="showExpertiseOverview()">← Back to expertise</button>
+        <div class="ep-icon-large"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="ep-title">Regulatory Operations &amp; Submissions</div>
+        <div class="ep-intro">End-to-end support for regulatory submission programs — from planning and coordination through publishing, QC, and agency submission — across IND, NDA, BLA, and related applications.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-inner">
+        <div class="detail-grid">
+          <div class="detail-card">
+            <div class="detail-card-title">Submission planning &amp; coordination</div>
+            <ul class="detail-list">
+              <li>Submission timeline development and tracking</li>
+              <li>Cross-functional coordination with medical writing, CMC, clinical, and regulatory teams</li>
+              <li>Agency meeting preparation and follow-up</li>
+              <li>Regulatory intelligence and submission strategy support</li>
+              <li>IND, NDA, BLA, and supplement coordination</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">eCTD publishing &amp; QC</div>
+            <ul class="detail-list">
+              <li>eCTD publishing software operation and oversight (DocuBridge, eCTDXPress, Extedo)</li>
+              <li>Submission QC against FDA, EMA, and ICH requirements</li>
+              <li>eCopy preparation and NEES submission support</li>
+              <li>Publishing vendor coordination and oversight</li>
+              <li>Sequence management and lifecycle tracking</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Regulatory tracking &amp; reporting</div>
+            <ul class="detail-list">
+              <li>Regulatory submission tracking databases and dashboards</li>
+              <li>Correspondence and commitment tracking</li>
+              <li>Due date and milestone management</li>
+              <li>Status reporting for regulatory and leadership teams</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Vendor &amp; cross-functional support</div>
+            <ul class="detail-list">
+              <li>CRO and publishing vendor coordination</li>
+              <li>Regulatory operations bridging with clinical, medical, and CMC functions</li>
+              <li>Small biotech and startup regulatory infrastructure support</li>
+              <li>Government contractor regulatory operations experience</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout"><p>I have hands-on experience supporting submission programs in small biotech, CRO, and government contractor environments — comfortable operating independently or as embedded support within a larger team.</p></div>
+      </div>
+    </div>
+    <div class="contact-strip">
+      <h2>Interested in this type of support?</h2>
+      <p>Available for project-based, contract, or full-time regulatory operations roles.</p>
+      <div class="contact-info">
+        <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+    <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+  </div>
+
+  <!-- Sub-page: Document Quality -->
+  <div id="expertise-doc-quality" style="display:none">
+    <div class="expertise-page-hero">
+      <div class="expertise-page-hero-inner">
+        <button class="ep-back" onclick="showExpertiseOverview()">← Back to expertise</button>
+        <div class="ep-icon-large"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div class="ep-title">Document &amp; Submission Quality</div>
+        <div class="ep-intro">Technical document preparation and quality review ensuring regulatory submissions meet agency formatting standards, PDF/eCTD technical requirements, and internal quality expectations.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-inner">
+        <div class="detail-grid">
+          <div class="detail-card">
+            <div class="detail-card-title">PDF preparation &amp; QC</div>
+            <ul class="detail-list">
+              <li>PDF QC against FDA and ICH technical specifications</li>
+              <li>Bookmark creation, review, and correction</li>
+              <li>Internal and external hyperlinking</li>
+              <li>Document properties, security settings, and rendering checks</li>
+              <li>Adobe Acrobat Professional — advanced document manipulation</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Word document standards</div>
+            <ul class="detail-list">
+              <li>Template cleanup and standardization</li>
+              <li>Style-based formatting for eCTD-compatible output</li>
+              <li>Table of contents and cross-reference management</li>
+              <li>Track changes review and document finalization</li>
+              <li>Conversion to PDF with formatting preservation</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Submission-ready formatting</div>
+            <ul class="detail-list">
+              <li>Margin, font, and layout standards per FDA guidance</li>
+              <li>Module-level document organization</li>
+              <li>Document standards checklists and QC workflows</li>
+              <li>Pre-submission review and issue resolution</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Document standards &amp; governance</div>
+            <ul class="detail-list">
+              <li>Document naming conventions and controlled vocabulary</li>
+              <li>File organization for eCTD sequence folders</li>
+              <li>Document standards guidance and author training</li>
+              <li>Quality checklists for common document types</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout"><p>Strong technical proficiency in Adobe Acrobat Professional, Microsoft Word, and document management workflows — with deep familiarity with FDA technical specifications for electronic submissions.</p></div>
+      </div>
+    </div>
+    <div class="contact-strip">
+      <h2>Need submission document support?</h2>
+      <p>Available for document QC, formatting support, or standards development engagements.</p>
+      <div class="contact-info">
+        <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+    <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+  </div>
+
+  <!-- Sub-page: Regulatory Systems -->
+  <div id="expertise-reg-systems" style="display:none">
+    <div class="expertise-page-hero">
+      <div class="expertise-page-hero-inner">
+        <button class="ep-back" onclick="showExpertiseOverview()">← Back to expertise</button>
+        <div class="ep-icon-large"><svg class="icon-svg" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <div class="ep-title">Regulatory Systems &amp; Veeva/eTMF</div>
+        <div class="ep-intro">Hands-on support for regulated document management systems, clinical trial master file platforms, and the operational workflows that connect regulatory teams with their systems infrastructure.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-inner">
+        <div class="detail-grid">
+          <div class="detail-card">
+            <div class="detail-card-title">Veeva Vault eTMF</div>
+            <ul class="detail-list">
+              <li>Administrative support and configuration assistance</li>
+              <li>Document upload, indexing, and metadata management</li>
+              <li>Workflow configuration and troubleshooting</li>
+              <li>User account management and access support</li>
+              <li>TMF completeness review and gap assessment support</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">System operations &amp; UAT</div>
+            <ul class="detail-list">
+              <li>User Acceptance Testing (UAT) coordination and execution</li>
+              <li>Test script development and documentation</li>
+              <li>Issue logging and resolution support</li>
+              <li>System validation support activities</li>
+              <li>Change management documentation</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Documentation &amp; user support</div>
+            <ul class="detail-list">
+              <li>System process documentation and SOPs</li>
+              <li>User guidance materials and quick reference guides</li>
+              <li>Training material development</li>
+              <li>Onboarding support for new system users</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Broader systems experience</div>
+            <ul class="detail-list">
+              <li>SharePoint document libraries and regulatory repositories</li>
+              <li>Regulatory database management and maintenance</li>
+              <li>eCTD publishing system administration (DocuBridge, eCTDXPress)</li>
+              <li>Vendor system coordination and oversight</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout"><p>Comfortable bridging the gap between regulatory operations teams and systems/IT — translating operational needs into system requirements, and system capabilities into practical user workflows.</p></div>
+      </div>
+    </div>
+    <div class="contact-strip">
+      <h2>Need regulatory systems support?</h2>
+      <p>Available for Veeva/eTMF admin, UAT coordination, or system documentation projects.</p>
+      <div class="contact-info">
+        <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+    <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+  </div>
+
+  <!-- Sub-page: Process Improvement -->
+  <div id="expertise-process" style="display:none">
+    <div class="expertise-page-hero">
+      <div class="expertise-page-hero-inner">
+        <button class="ep-back" onclick="showExpertiseOverview()">← Back to expertise</button>
+        <div class="ep-icon-large"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+        <div class="ep-title">Process Improvement &amp; SOPs</div>
+        <div class="ep-intro">Practical operational documentation and process improvement for regulatory and clinical operations teams — particularly useful for growing organizations that need to formalize or clean up their workflows.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-inner">
+        <div class="detail-grid">
+          <div class="detail-card">
+            <div class="detail-card-title">SOPs &amp; work instructions</div>
+            <ul class="detail-list">
+              <li>Regulatory operations SOPs from scratch or revision</li>
+              <li>Work instructions for submission, publishing, and document workflows</li>
+              <li>SOP gap assessment and prioritization</li>
+              <li>SOP formatting and controlled document standards</li>
+              <li>Periodic review and update support</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Templates &amp; checklists</div>
+            <ul class="detail-list">
+              <li>Submission planning and tracking templates</li>
+              <li>Document QC checklists for regulatory submissions</li>
+              <li>Regulatory operations workflow templates</li>
+              <li>Meeting and correspondence tracking tools</li>
+              <li>Standardized forms and regulatory registers</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Inspection readiness</div>
+            <ul class="detail-list">
+              <li>Inspection readiness documentation development</li>
+              <li>TMF completeness and quality review support</li>
+              <li>Audit preparation and document organization</li>
+              <li>CAPA documentation for regulatory operations findings</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Operational cleanup</div>
+            <ul class="detail-list">
+              <li>Regulatory operations process mapping</li>
+              <li>Lightweight systems and process cleanup for small teams</li>
+              <li>Identifying and eliminating workflow redundancies</li>
+              <li>Transitioning informal practices to documented, repeatable processes</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout"><p>Particularly experienced supporting small biotech organizations that are formalizing their regulatory operations for the first time — building practical, right-sized processes that can scale with the organization.</p></div>
+      </div>
+    </div>
+    <div class="contact-strip">
+      <h2>Looking to improve your regulatory operations?</h2>
+      <p>Available for SOP development, process documentation, or operational improvement projects.</p>
+      <div class="contact-info">
+        <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+    <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+  </div>
+
+  <!-- Sub-page: Technical Enablement -->
+  <div id="expertise-technical" style="display:none">
+    <div class="expertise-page-hero">
+      <div class="expertise-page-hero-inner">
+        <button class="ep-back" onclick="showExpertiseOverview()">← Back to expertise</button>
+        <div class="ep-icon-large"><svg class="icon-svg" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="ep-title">Technical Enablement</div>
+        <div class="ep-intro">Practical automation and tooling that reduces manual work, improves visibility, and brings structure to regulatory operations data — without requiring full IT solutions.</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-inner">
+        <div class="detail-grid">
+          <div class="detail-card">
+            <div class="detail-card-title">Excel &amp; VBA automation</div>
+            <ul class="detail-list">
+              <li>Custom macros for regulatory document processing</li>
+              <li>Automated trackers and status dashboards</li>
+              <li>Data cleaning and transformation scripts</li>
+              <li>Submission timeline tools with calculated milestones</li>
+              <li>Regulatory register and correspondence databases</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Reporting &amp; dashboards</div>
+            <ul class="detail-list">
+              <li>Submission status dashboards for leadership</li>
+              <li>TMF metrics and completeness tracking tools</li>
+              <li>Regulatory milestone and due date reporting</li>
+              <li>Cross-program regulatory activity summaries</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Document automation</div>
+            <ul class="detail-list">
+              <li>Word template automation via VBA and macros</li>
+              <li>Batch document processing and renaming tools</li>
+              <li>PDF manipulation workflows using Adobe and scripting</li>
+              <li>Basic HTML and web-based tools for regulatory content</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Practical tools for small teams</div>
+            <ul class="detail-list">
+              <li>Lightweight SharePoint solutions for document management</li>
+              <li>Smartsheet and project management tool configuration</li>
+              <li>Planview and resource tracking setup</li>
+              <li>Right-sized solutions that avoid over-engineering</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout"><p>Strong technical aptitude with a regulatory operations context — the focus is always on practical tools that teams will actually use, rather than complex solutions that create new maintenance burdens.</p></div>
+      </div>
+    </div>
+    <div class="contact-strip">
+      <h2>Need practical regulatory tools built?</h2>
+      <p>Available for Excel automation, dashboard development, or lightweight tooling projects.</p>
+      <div class="contact-info">
+        <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+    <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+  </div>
+
+</div><!-- /page-expertise -->
+
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: TOOLS & SYSTEMS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="page-tools">
+  <div class="expertise-page-hero">
+    <div class="expertise-page-hero-inner">
+      <div class="section-eyebrow">Tools &amp; Systems</div>
+      <div class="ep-title">Software &amp; platform experience</div>
+      <div class="ep-intro">A working inventory of the tools, platforms, and systems I have hands-on experience with across regulatory operations, publishing, document management, and technical enablement.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-inner">
+
+      <div class="tools-category">
+        <div class="tools-cat-title">eCTD publishing &amp; submission systems</div>
+        <div class="tools-grid">
+          <div class="tool-chip"><span class="tool-chip-icon">📄</span> Lorenz DocuBridge</div>
+          <div class="tool-chip"><span class="tool-chip-icon">📄</span> eCTDXPress</div>
+          <div class="tool-chip"><span class="tool-chip-icon">📄</span> Extedo eCTDmanager</div>
+        </div>
+      </div>
+
+      <div class="tools-category">
+        <div class="tools-cat-title">Regulatory &amp; clinical document management</div>
+        <div class="tools-grid">
+          <div class="tool-chip"><span class="tool-chip-icon">🗄️</span> Veeva Vault eTMF</div>
+          <div class="tool-chip"><span class="tool-chip-icon">🗄️</span> SharePoint</div>
+        </div>
+      </div>
+
+      <div class="tools-category">
+        <div class="tools-cat-title">Document preparation &amp; quality</div>
+        <div class="tools-grid">
+          <div class="tool-chip"><span class="tool-chip-icon">📝</span> Adobe Acrobat Professional</div>
+          <div class="tool-chip"><span class="tool-chip-icon">📝</span> Microsoft Word</div>
+          <div class="tool-chip"><span class="tool-chip-icon">📝</span> Microsoft PowerPoint</div>
+        </div>
+      </div>
+
+      <div class="tools-category">
+        <div class="tools-cat-title">Data, analytics &amp; automation</div>
+        <div class="tools-grid">
+          <div class="tool-chip"><span class="tool-chip-icon">📊</span> Microsoft Excel</div>
+          <div class="tool-chip"><span class="tool-chip-icon">💻</span> VBA / Macros</div>
+          <div class="tool-chip"><span class="tool-chip-icon">💻</span> Basic HTML</div>
+        </div>
+      </div>
+
+      <div class="tools-category">
+        <div class="tools-cat-title">Project &amp; work management</div>
+        <div class="tools-grid">
+          <div class="tool-chip"><span class="tool-chip-icon">📅</span> Smartsheet</div>
+          <div class="tool-chip"><span class="tool-chip-icon">📅</span> Planview</div>
+          <div class="tool-chip"><span class="tool-chip-icon">📅</span> Microsoft Teams</div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: 16px;">
+        <p>This list will be refined over time. If you work with a system not listed here, I'm comfortable learning new platforms — particularly those adjacent to regulatory operations, document management, or submission workflows.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="contact-strip">
+    <h2>Let's connect</h2>
+    <p>Based in Frederick, MD. Open to remote and hybrid opportunities nationwide.</p>
+    <div class="contact-info">
+      <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">LinkedIn Profile ↗</a>
+      <span class="contact-item">Frederick, MD · Remote-friendly</span>
+    </div>
+  </div>
+  <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: ABOUT -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="expertise-page-hero">
+    <div class="expertise-page-hero-inner">
+      <div class="section-eyebrow">About</div>
+      <div class="ep-title">Thomas Harvey, MS, RAC (US)</div>
+      <div class="ep-intro">Regulatory affairs and operations professional with 17+ years of experience in the biopharma industry.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-inner">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+        <div>
+          <div class="section-eyebrow" style="margin-bottom: 12px;">Background</div>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
+            I've spent my career at the intersection of regulatory affairs, operations, and the technical infrastructure that supports drug development. My work spans submission planning and execution, document quality, regulated systems administration, process improvement, and the practical automation that helps regulatory teams work more efficiently.
+          </p>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
+            I've supported regulatory programs in small biotech, CRO, and government contractor environments — comfortable working independently, as embedded operational support, or as a bridge between regulatory, systems, and vendor teams.
+          </p>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.75;">
+            My technical aptitude — particularly in Excel/VBA, Adobe, and document systems — complements my regulatory operations background and allows me to build practical tools that reduce manual work and improve visibility for the teams I support.
+          </p>
+        </div>
+        <div>
+          <div class="detail-card" style="margin-bottom: 16px;">
+            <div class="detail-card-title">Credentials &amp; education</div>
+            <ul class="detail-list">
+              <li>RAC (US) — Regulatory Affairs Certification, RAPS</li>
+              <li>MS — Graduate degree in a relevant life sciences or regulatory field</li>
+              <li>17+ years of regulatory affairs and operations experience</li>
+            </ul>
+          </div>
+          <div class="detail-card" style="margin-bottom: 16px;">
+            <div class="detail-card-title">Experience profile</div>
+            <ul class="detail-list">
+              <li>Small biotech and development-stage companies</li>
+              <li>CRO and contract regulatory support</li>
+              <li>Government contractor regulatory environments</li>
+              <li>FDA and EMA submission experience</li>
+              <li>Cross-functional collaboration across regulatory, clinical, CMC, and medical writing</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Location &amp; availability</div>
+            <ul class="detail-list">
+              <li>Based in Frederick, Maryland</li>
+              <li>Open to remote and hybrid opportunities</li>
+              <li>Available for full-time, contract, project-based, or consulting engagement</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-strip">
+    <h2>Get in touch</h2>
+    <p>The best way to reach me is via LinkedIn. I'm open to conversations about full-time roles, contract work, and consulting opportunities.</p>
+    <div class="contact-info">
+      <a class="contact-item" href="https://www.linkedin.com/in/thomas-harvey-aa945613/" target="_blank">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        Connect on LinkedIn
+      </a>
+      <span class="contact-item">Frederick, MD · Remote-friendly</span>
+    </div>
+  </div>
+  <footer><p>&copy; 2025 Thomas Harvey, MS, RAC (US). All rights reserved.</p></footer>
+</div>
+
+
+<script>
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    const navEl = document.getElementById('nav-' + page);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo(0, 0);
+    document.getElementById('navLinks').classList.remove('open');
+    if (page === 'expertise') showExpertiseOverview();
+  }
+
+  function showExpertise(slug) {
+    showPage('expertise');
+    document.getElementById('expertise-overview').style.display = 'none';
+    document.querySelectorAll('[id^="expertise-"]').forEach(el => {
+      if (el.id !== 'expertise-overview') el.style.display = 'none';
+    });
+    const target = document.getElementById('expertise-' + slug);
+    if (target) { target.style.display = 'block'; window.scrollTo(0, 0); }
+  }
+
+  function showExpertiseOverview() {
+    document.getElementById('expertise-overview').style.display = 'block';
+    document.querySelectorAll('[id^="expertise-"]').forEach(el => {
+      if (el.id !== 'expertise-overview') el.style.display = 'none';
+    });
+    window.scrollTo(0, 0);
+  }
+
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+</script>
+</body>
+</html>
